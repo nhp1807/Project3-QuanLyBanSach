@@ -34,10 +34,10 @@ public class AccountController {
             return new ResponseEntity("Account not found", HttpStatus.NOT_FOUND);
         }
         existingAccount.setId(account.getId());
-        existingAccount.setUsername(account.getUsername());
+        existingAccount.setUsername(existingAccount.getUsername());
         existingAccount.setPassword(encoder.encode(account.getPassword()));
         existingAccount.setRole(account.getRole());
-        Account updatedAccount = accountService.updateAccount(account);
+        Account updatedAccount = accountService.updateAccount(existingAccount);
 
         return new ResponseEntity<>(updatedAccount, HttpStatus.OK);
     }
@@ -70,7 +70,7 @@ public class AccountController {
     }
 
     // Get account by username
-    @GetMapping("/get/username/{username}")
+    @GetMapping("/get/username")
     public ResponseEntity<Account> getAccountByUsername(@RequestParam String username) {
         Account account = accountService.getAccountByUsername(username);
         return new ResponseEntity<>(account, HttpStatus.OK);

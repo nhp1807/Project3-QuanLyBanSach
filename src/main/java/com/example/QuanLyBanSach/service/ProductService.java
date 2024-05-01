@@ -39,4 +39,7 @@ public class ProductService {
     public List<Product> getProductsByAuthor(String author) {
         return productRepository.findByAuthor(author);
     }
+    public Product getProductByName(String name) {
+        return productRepository.findByName(name);
+    }
 }

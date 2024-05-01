@@ -35,4 +35,7 @@ public class CustomerService {
     public List<Customer> getCustomerByName(String name) {
         return customerRepository.findByName(name);
     }
+    public Customer getCustomerByPhone(String phone) {
+        return customerRepository.findByPhone(phone);
+    }
 }
